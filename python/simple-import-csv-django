@@ -1,0 +1,16 @@
+csv_file = request.FILES.get('file')
+if not csv_file.name.endswith('.csv'):
+	file_errors = "Archivo no permitido, debe ser un archivo CSV"
+	form = importProductForm()
+	data = {        
+	"form":form,
+	"file_errors":file_errors,
+	}
+	return render(request,"importProductDashboard.html",data)
+file_data = csv_file.read().decode("utf-8")
+lines = file_data.split("\n")
+#loop over the lines and save them in db. If error , store as string and then display
+for line in lines:                        
+	fields = line.split(",") 
+	var = fields[0]
+	# var = fields[1] 
