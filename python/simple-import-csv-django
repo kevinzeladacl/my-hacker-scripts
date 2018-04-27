@@ -1,3 +1,8 @@
+import csv
+import io
+.
+.
+.
 csv_file = request.FILES.get('file')
 if not csv_file.name.endswith('.csv'):
 	file_errors = "Archivo no permitido, debe ser un archivo CSV"
